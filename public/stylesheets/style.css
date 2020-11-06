@@ -1,0 +1,14 @@
+.banner {
+    background-image: url('//media.istockphoto.com/photos/shopping-trolley-empty-on-wooden-background-banner-copy-space-3d-picture-id1055554816');
+    background-size: cover;
+}
+
+.icon {
+    width: 1em;
+    color: white;
+}
+
+#lista-items > div {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
