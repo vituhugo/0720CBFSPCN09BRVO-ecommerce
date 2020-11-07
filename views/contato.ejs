@@ -7,7 +7,7 @@
         <div class="card-body">
             <div class="form-group">
                 <label>Assunto:</label>
-                <select class="form-control" name="assunto" required>
+                <select id="ddl-assunto" class="form-control" name="assunto" required>
                     <option value="">Selecione...</option>
                     <option>Reclamação</option>
                     <option>Devolução</option>
@@ -18,11 +18,17 @@
             </div>
             <div class="form-group">
                 <label>Título</label>
-                <input type="text" name="titulo" class="form-control" placeholder="digite o titulo..." required>
+                <input id="txt-titulo" type="text" name="titulo" class="form-control" placeholder="digite o titulo..." required>
+                <span id="txt-titulo-error" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input id="txt-email" type="text" name="email" class="form-control" placeholder="digite o email..." required>
+                <span id="txt-email-error" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label>Mensagem:</label>
-                <textarea name="messagem" class="form-control" placeholder="Escreva sua mensagem..." required></textarea>
+                <textarea id="txa-mensagem" name="mensagem" class="form-control" placeholder="Escreva sua mensagem..." required></textarea>
             </div>
         </div>
         <div class="card-footer text-right">
