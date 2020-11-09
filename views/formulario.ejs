@@ -1,0 +1,84 @@
+<%- include('partials/head') %>
+
+<form class="container my-5">
+    
+    <div class="form-group">
+        <label>CEP</label>
+        <input id="txt-cep" type="text" name="cep" class="form-control" placeholder="digite o cep..." required>
+    </div>
+    <div class="form-group">
+        <label>Rua</label>
+        <input id="txt-rua" type="text" name="rua" class="form-control" required readonly>
+    </div>
+    <div class="form-group">
+        <label>bairro</label>
+        <input id="txt-bairro" type="text" name="bairro" class="form-control" required readonly>
+    </div>
+    <div class="form-group">
+        <label>cidade</label>
+        <input id="txt-cidade" type="text" name="cidade" class="form-control" required readonly>
+    </div>
+    <div class="form-group">
+        <label>estado</label>
+        <input id="txt-estado" type="text" name="estado" class="form-control" required readonly>
+    </div>
+    
+    <hr />
+    <div class="text-right">
+        <button class="btn btn-outline-primary">Enviar</button>
+    </div>
+    
+</form>
+<!-- <script>
+    //... MAIS DE 500 linhas aqui
+    fetch('viacep...').then();
+    //.. MAIS de 500 linhas aqui
+     
+
+    // Consultando uma API exemplo: Viacep
+    fetch('https://viacep.com.br/ws/11441240/json/').then((response) => {
+        return response.json()
+    }).then((dados) => {
+        console.log(dados)
+    })
+
+    // Equivalente
+    (async function viacep() {
+        let response = await fetch('https://viacep.com.br/ws/11441240/json/');
+        let dados = await response.json();
+        console.log(dados);
+    })()
+
+</script> -->
+<script>
+    var cep = document.getElementById('txt-cep')
+    // equivalente: var cep = document.querySelector('#txt-cep')
+
+    cep.addEventListener('blur', async (event) => {
+        let cep_value = event.target.value;
+        // equivalente: let cep_value = cep.value;
+        
+        if (cep_value.replace(new RegExp('[^0-9]'), "").length === 8) {
+            let url = `https://viacep.com.br/ws/${cep_value}/json/`;
+            // equivalente: let url = 'https://viacep.com.br/ws/'+cep_value+'/json/';
+            
+            let response = await fetch(url);
+            let dados = await response.json();
+
+            console.log(dados);
+            
+            rua = document.querySelector('#txt-rua')
+            rua.value = dados.logradouro
+
+            bairro = document.querySelector('#txt-bairro')
+            bairro.value = dados.bairro
+
+            cidade = document.querySelector('#txt-cidade')
+            cidade.value = dados.localidade
+
+            estado = document.querySelector('#txt-estado')
+            estado.value = dados.uf
+        }
+    });
+</script>
+        <%- include('partials/footer') %>

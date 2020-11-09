@@ -14,6 +14,8 @@ res.render('carrinho');
 
 router.get('/contato', ContatoController.index);
 
+router.get('/formulario', (req, res) => res.render('formulario'));
+
 router.post('/contato/send', ContatoController.send)
 
 router.get('/produto/:id', ProdutoController.index)
