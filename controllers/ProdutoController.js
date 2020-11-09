@@ -1,6 +1,7 @@
 const ProdutoController = {
     index(req, res) {
-        return res.render('produto');
+        let id = req.params.id;
+        return res.render('produto', {id});
     }
 }
 
