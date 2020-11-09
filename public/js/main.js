@@ -44,3 +44,26 @@ if (el_txt_email) {
         }
     });
 }
+
+fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then( produtos => {
+                console.log(produtos);
+                let lista_itens = document.querySelector('#lista-items');
+                lista_itens.innerHTML = "";
+                produtos.forEach((produto) => {
+                    lista_itens.innerHTML += `<div class="col-3">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h3 class="card-title">${produto.title}</h3>
+                                                    </div>
+                                                    <img class="card-img" src="${produto.image}" width="100" height="200" />
+                                                    <div class="card-footer text-center d-flex justify-content-between">
+                                                        <h4>R$ ${produto.price}</h4>
+                                                        <a href="/produto/${produto.id}" class="btn btn-primary">Comprar</a>
+                                                    </div>
+                                                </div>
+                                            </div>`;
+                    // equivalente: lista_itens.innerHTML = lista_itens.innerHTML.concat(`<div class="col-3">...
+                })
+            })
